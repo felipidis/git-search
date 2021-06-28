@@ -13,6 +13,9 @@ const Router = () => {
 				<Route exact path={'/:user'}>
 					<Profile />
 				</Route>
+				<Route>
+					<Home />
+				</Route>
 			</Switch>
 		</BrowserRouter>
 	)
