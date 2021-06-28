@@ -1,3 +1,3 @@
-export const toProfile = (history, name) => {  
-  history.push(`/${name}`)
+export const toProfile = (history, name) => {
+	history.push(`/${name}`)
 }

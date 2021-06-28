@@ -70,7 +70,10 @@ const MainProfile = () => {
 							{userData.length ? (
 								listOfRepos
 							) : (
-								<p className='text-white'> Nenhum repositório encontrado!</p>
+								<h5 className='text-white text-center p-3'>
+									{' '}
+									Nenhum repositório encontrado!
+								</h5>
 							)}
 						</section>
 					</main>
@@ -80,7 +83,9 @@ const MainProfile = () => {
 					<header className='mb-3'>
 						<SearchBar />
 					</header>
-					<h1 className='text-center text-white m-5 p-5'>Usuário Não Existe!</h1>
+					<h1 className='text-center text-white m-5 p-5'>
+						Usuário Não Existe!
+					</h1>
 				</div>
 			)}
 		</div>

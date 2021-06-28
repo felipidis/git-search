@@ -15,15 +15,19 @@ const Profile = ({ user }) => (
 				<h3 className='title text-white mt-2'>{user.name}</h3>
 				<h4 className='subTitle text-white'>{user.login}</h4>
 				<p className='text-white m-0 '>
-					Repositories: <span className='badge badge-success'>{user.public_repos}</span>
+					Repositories:{' '}
+					<span className='badge badge-success'>{user.public_repos}</span>
 				</p>
 				<p className='text-white m-0'>
-					Followers: <span className='badge badge-primary'>{user.followers}</span>
+					Followers:{' '}
+					<span className='badge badge-primary'>{user.followers}</span>
 				</p>
 				<p className='text-white m-0'>
 					Followings: <span className='badge badge-info'>{user.following}</span>
 				</p>
-				{user.bio && <p className="mt-2 border rounded px-2 text-white">{user.bio}</p>}
+				{user.bio && (
+					<p className='mt-2 border rounded px-2 text-white'>{user.bio}</p>
+				)}
 			</div>
 			<div className='card-body pt-0'>
 				<a

@@ -4,8 +4,8 @@ import useRequest from '../../global/GlobalContext'
 
 const SearchBar = () => {
 	const [input, setInput] = useState('')
-  const history = useHistory()
-  const { getData } = useRequest()
+	const history = useHistory()
+	const { getData } = useRequest()
 
 	return (
 		<div>
