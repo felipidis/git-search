@@ -11,20 +11,21 @@ const Profile = ({ user }) => (
 				src={user.avatar_url}
 				alt='foto'
 			/>
-			<ul className='list-group list-group-flush rounded '>
-				<li className='list-group-item bg-dark text-white border-0'>
-					Repositories:{' '}
-					<span className='badge badge-success'>{user.public_repos}</span>
-				</li>
-				<li className='list-group-item bg-dark text-white border-0'>
-					Followers:{' '}
-					<span className='badge badge-primary'>{user.followers}</span>
-				</li>
-				<li className='list-group-item bg-dark text-white border-0'>
+			<div className='card-body text-center'>
+				<h3 className='title text-white mt-2'>{user.name}</h3>
+				<h4 className='subTitle text-white'>{user.login}</h4>
+				<p className='text-white m-0 '>
+					Repositories: <span className='badge badge-success'>{user.public_repos}</span>
+				</p>
+				<p className='text-white m-0'>
+					Followers: <span className='badge badge-primary'>{user.followers}</span>
+				</p>
+				<p className='text-white m-0'>
 					Followings: <span className='badge badge-info'>{user.following}</span>
-				</li>
-			</ul>
-			<div className='card-body'>
+				</p>
+				{user.bio && <p className="mt-2 border rounded px-2 text-white">{user.bio}</p>}
+			</div>
+			<div className='card-body pt-0'>
 				<a
 					href={`${user.html_url}`}
 					target='blank'
