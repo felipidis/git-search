@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios'
 import useRequest from '../../global/GlobalContext'
+import { requestData } from '../../utils/api'
 import { useParams, useHistory } from 'react-router-dom'
-import { BASE_URL, client_id, client_secret } from '../../constants/config'
 import Repo from '../Repo'
 import User from '../User'
 
 const MainProfile = () => {
-	const { input, setInput, data, getData } = useRequest()
+	const { data, getData } = useRequest()
 	const [userData, setUserData] = useState([])
+	const [input, setInput] = useState('')
 	const history = useHistory()
 	const { user } = useParams()
 
@@ -25,23 +25,15 @@ const MainProfile = () => {
 	}, [user])
 
 	const getRepos = () => {
-		axios
-			.get(
-				`${BASE_URL}/${
-					input.length ? input : user
-				}/repos?client_id=${client_id}&client_secret=${client_secret}`
-			)
+		const promise = requestData(`${input.length ? input : user}/repos`)
+		promise
 			.then((response) => setUserData(response.data))
 			.catch((error) => console.log(error.message))
 	}
 
 	const getStarreds = () => {
-		axios
-			.get(
-				`${BASE_URL}/${
-					input.length ? input : user
-				}/starred?client_id=${client_id}&client_secret=${client_secret}`
-			)
+		const promise = requestData(`${input.length ? input : user}/starred`)
+		promise
 			.then((response) => setUserData(response.data))
 			.catch((error) => console.log(error.message))
 	}
@@ -69,7 +61,9 @@ const MainProfile = () => {
 							placeholder='Digite um nome de usuário'
 							value={input}
 							onChange={(e) => setInput(e.target.value)}
-							onKeyDown={ (e) => e.key === 'Enter' ? getData(input, 'Home', history) : null }
+							onKeyDown={(e) =>
+								e.key === 'Enter' ? getData(input, 'Home', history) : null
+							}
 						/>
 						<button
 							className='btn btn-danger mt-2 mt-md-0 ml-md-3 col-12 col-md-3'

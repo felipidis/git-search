@@ -1,19 +1,15 @@
 import React, { useState, createContext, useContext } from 'react'
-import axios from 'axios'
-import { BASE_URL, client_id, client_secret } from '../constants/config'
+import { requestData } from '../utils/api'
 import { toProfile } from '../routes/coordinator'
 
 const Request = createContext()
 
 export const Provider = ({ children }) => {
-	const [input, setInput] = useState('')
 	const [data, setData] = useState([])
 
-	const getData = (inp = input, context, history) => {
-		axios
-			.get(
-				`${BASE_URL}/${inp}?client_id=${client_id}&client_secret=${client_secret}`
-			)
+	const getData = (inp, context, history) => {
+		const promise = requestData(inp)
+		promise
 			.then((response) => {
 				if (response.status === 200) {
 					setData(response.data)
@@ -31,8 +27,6 @@ export const Provider = ({ children }) => {
 	return (
 		<Request.Provider
 			value={{
-				input,
-				setInput,
 				data,
 				setData,
 				getData,
@@ -45,6 +39,6 @@ export const Provider = ({ children }) => {
 
 export default function useRequest() {
 	const request = useContext(Request)
-	const { input, setInput, data, setData, getData } = request
-	return { input, setInput, data, setData, getData }
+	const { data, setData, getData } = request
+	return { data, setData, getData }
 }

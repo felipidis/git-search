@@ -1,10 +1,12 @@
 import useRequest from '../../global/GlobalContext'
+import { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import Logo from '../../assets/Octocat.png'
 
 const MainHome = () => {
 	const history = useHistory()
-	const { input, setInput, getData } = useRequest()
+	const { getData } = useRequest()
+	const [input, setInput] = useState('')
 
 	return (
 		<main className='d-flex flex-column  flex-md-row vh-100 justify-content-center align-items-center bg-dark'>
@@ -22,7 +24,9 @@ const MainHome = () => {
 						placeholder='Digita um nome de usuário'
 						value={input}
 						onChange={(e) => setInput(e.target.value)}
-						onKeyDown={ (e) => e.key === 'Enter' ? getData(input, 'Home', history) : null }
+						onKeyDown={(e) =>
+							e.key === 'Enter' ? getData(input, 'Home', history) : null
+						}
 					/>
 					<button
 						className='btn btn-danger btn-block mt-3'
