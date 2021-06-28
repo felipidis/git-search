@@ -1,5 +1,5 @@
-export const client_id = '20c8cc247a68f49ee182'
+export const client_id = '226b8d59b5eae535910e'
 
-export const client_secret = 'e6502c6b8dc03f7fe95f0d35e3ec5a4f7ad23985'
+export const client_secret = 'b40533bdb02e7f3663666062098cc046c1b0ca81'
 
 export const BASE_URL = 'https://api.github.com/users'
