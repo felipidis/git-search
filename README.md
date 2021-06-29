@@ -10,9 +10,9 @@ It`s a github research repository : [Vercel App Link](https://git-search-six.ver
 3.  Enter the local repository
     - cd ./questgit
 4.  You need to install all dependencies
-    - npm i or yarn add
+    - yarn add
 5.  Start the application.
-    - npm run start or yarn start
+    - yarn start
 
 ## Tecnologies
 
